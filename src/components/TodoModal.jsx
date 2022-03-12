@@ -69,6 +69,7 @@ function TodoModal({ type, handleToggleModal, todo }) {
             time: new Date().toLocaleString()
           })
         );
+        dispatch(filterTodos(filterStatus));
 
         toast.success('Task Added Successfully');
       }
