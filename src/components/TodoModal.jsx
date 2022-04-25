@@ -57,7 +57,7 @@ function TodoModal({ type, handleToggleModal, todo }) {
     e.preventDefault();
 
     if (!title) {
-      toast.error("Please enter a title!");
+      toast.error('Please enter a title!');
     }
     if (title && status) {
       if (type === 'add') {
@@ -66,7 +66,7 @@ function TodoModal({ type, handleToggleModal, todo }) {
             id: uuidv4(),
             title,
             status,
-            time: new Date().toLocaleString()
+            time: new Date().getTime()
           })
         );
         dispatch(filterTodos(filterStatus));

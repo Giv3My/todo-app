@@ -14,7 +14,8 @@ function AppHeader() {
   const [modalOpen, setModalOpen] = React.useState(false);
 
   React.useEffect(() => {
-    dispatch(filterTodos(filterStatus));
+    JSON.parse(localStorage.getItem('todoList')).length &&
+      dispatch(filterTodos(filterStatus));
   }, [filterStatus]);
 
   const handleToggleAddModal = () => {

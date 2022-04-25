@@ -41,6 +41,7 @@ function TodoItem({ id, title, status, time }) {
 
   const handleDeleteTodo = () => {
     dispatch(deleteTodo(id));
+    dispatch(filterTodos(filterStatus));
 
     toast.success('Todo Deleted Successfully');
   };

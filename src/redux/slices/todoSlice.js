@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import sortTodosByTime from './sortingTodos';
+
 const getInitialTodo = () => {
   const localTodoList = localStorage.getItem('todoList');
 
@@ -10,10 +12,6 @@ const getInitialTodo = () => {
 
     return [];
   }
-};
-
-const sortTodosByTime = (todos) => {
-  return todos.sort((a, b) => new Date(b.time) - new Date(a.time));
 };
 
 const initialState = {
@@ -42,7 +40,7 @@ export const todoSlice = createSlice({
       const todos = JSON.parse(localStorage.getItem('todoList'));
       const newTodos = todos.filter(todo => todo.id !== action.payload);
 
-      state.todoList = [...newTodos];
+      state.todoList = [...sortTodosByTime(newTodos)];
       localStorage.setItem('todoList', JSON.stringify(newTodos));
     },
     updateTodo: (state, action) => {
